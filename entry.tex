@@ -1,0 +1,111 @@
+%%% Research Diary - Entry
+\documentclass[11pt,a4paper,twoside]{article}
+
+\input{config.tex}
+\addbibresource{/home/asinha/Documents/01_Readables/00_research_papers/bibliography/masterbib.bib}
+
+% Begin document.
+\begin{document}
+\maketitle{}
+
+\begin{itemize}
+  \item Conference website: \url{https://www.cnsorg.org}
+  \item Full program, with links to recordings: \url{https://cns2020online.sched.com/} (Password: \texttt{CNS*2020!})
+\end{itemize}
+
+\section{Keynotes}
+\subsection{Matt Botvinick: Deep reinforcement learning and its neuroscientific implications}
+The recording can be found on YouTube here:\url{https://youtu.be/H4Sux8Q89cg}.
+Talk is based closely on the paper:
+
+\fullcite{Botvinick2020}.
+
+Notes:
+\begin{itemize}
+  \item Deep learning techniques have been around for a long time. We're just learning how to scale them, and more and more what they're capable of.
+  \item However, \emph{Deep Reinforcement Learning} is new and does not get the same amount of focus as Deep Learning.
+  \item In a lot of RL work, rather impoverished representations of the environment have been used.
+    \begin{itemize}
+      \item state representation, sometimes referred to as \enquote{tabular}, consists of the world carved up into states,
+      \item but these states tend to be orthogonal to each other and do not have representational similarities to each other,
+      \item no shared features, no similarity space that can be exploited to generalise to new but related state or to transfer to problems that haven't been encountered before but which may share features with tasks that you've performed in the past.
+    \end{itemize}
+  \item Deep learning at its root is just representation learning, and RL is just motivated behaviour. Thus, strongly linked to neuroscience.
+  \item Deep Reinforcement Learning (DRL) combines both. It is greater than the sum of the two individual deep and reinforcement learning parts.
+    \begin{itemize}
+      \item Meta-reinforcement learning~\autocite{Wang2018}: instead of one task, train on a family of tasks and then at test time, disable RL and give the system a brand new task.
+      \item Given that learning has been disabled and thus cannot learn about the new task, it should do poorly.
+      \item However, turns out, it does quite well.
+      \item The RL that adjusts connection weights in this system also has the effect of tuning the activation dynamics in the system. These activation dynamics, over time, come to implement their own separate RL\@. So, in an emergent way, the system learns to solve problems using \enquote{working memory} rather than weight changes.
+      \item Meta-RLs are Bayesian learners~\autocite{Ortega2019}.
+      \item In \textcite{Ortega2019}, they showed that Meta-RLs could reproduce tasks used in neuroscience studies as emergent properties:
+        \begin{itemize}
+          \item Probability matching~\autocite{Tsutsui2016}. Also matched statistics from neural recordings.
+          \item Changes in learning rate in the brain depending on underlying reward probability~\autocite{Behrens2007} even though the Meta-RL system has a fixed learning rate.
+          \item Flipping in dopamine response~\autocite{BrombergMartin2010}.
+        \end{itemize}
+      \item In \enquote{Distributional TD learning}~\autocite{Dabney2020}, they split the learning rate into two components such that they can be independently scaled for positive and negative reward prediction errors.
+        \begin{itemize}
+          \item This follows that dopamine neurons should have different scaling factors for positive and negative reward prediction errors, and the relative scales of these parameters should be different across dopamine neuron. They observed this in mice.
+        \end{itemize}
+      \item Unsupervised DL~\autocite{Higgins2020}: \(\beta\)-VAE:\ generate disentangled representations. The brain also seems to do this type of disentangling.
+        \begin{itemize}
+          \item Reconstruction: they can take as few as 12 neurons from the monkey's brain, and using the parameters from the \(\beta\)-VAE, they could re-construct what the monkey was looking at.
+        \end{itemize}
+    \end{itemize}
+  \item Model based RL~\autocite{Silver2017,Silver2016} (Alpha-Go).
+    \begin{itemize}
+      \item Two step task: animals can show insight about the causal structure of a domain by observing the outcome of one action and modifying probability of a different action~\autocite{Daw2011}.
+      \item Seen in rodents, and seen in their meta-RL agent which does not use model-based RL to learn, so it emerges from model-free learning.
+    \end{itemize}
+  \item Memory and DRL~\autocite{Graves2016}.
+  \item Motor control and DRL~\autocite{Merel2019}.
+  \item Social cognition and DRL~\autocite{McKee2020}.
+  \item Connectomics and DRL~\autocite{Tschopp2018}.
+  \item DRL:\ caveats and challenges:
+    \begin{itemize}
+      \item It's engineering, not neuroscience, so more work needs to be done to translate findings to neuroscience.
+      \item Back-propagation remains controversial.
+      \item It cannot handle continuous learning.
+      \item Do not do well in long term temporary credit assignment problems,
+      \item Do not currently match humans in flexibility and sampling efficiency.
+    \end{itemize}
+\end{itemize}
+Work cited in the talk:
+\begin{itemize}
+  \item DRL\@:
+    \begin{itemize}
+      \item \fullcite{Krizhevsky2012}.
+      \item \fullcite{Mante2013}.
+      \item \fullcite{Zipser1991}.
+      \item \fullcite{Sutton2018}.
+      \item \fullcite{Tesauro1995}.
+      \item \fullcite{Barto2007}.
+      \item \fullcite{Mnih2015}.
+      \item \fullcite{Vinyals2019}.
+      \item \fullcite{Jaderberg2019}.
+      \item \fullcite{Schultz1997}.
+      \item \fullcite{Wang2018}.
+      \item \fullcite{Ortega2019}.
+      \item \fullcite{Volkmann2010}.
+      \item \fullcite{Tsutsui2016}.
+      \item \fullcite{Behrens2007}.
+      \item \fullcite{Dabney2020}.
+      \item \fullcite{BrombergMartin2010}.
+      \item \fullcite{Higgins2020}.
+      \item \fullcite{Silver2016},
+      \item \fullcite{Silver2017}.
+      \item \fullcite{Miller2017}.
+      \item \fullcite{Daw2011}.
+      \item \fullcite{Graves2016}.
+      \item \fullcite{Merel2019}.
+      \item \fullcite{McKee2020}.
+      \item \fullcite{Tschopp2018}.
+    \end{itemize}
+\end{itemize}
+
+
+
+\printbibliography{}
+\printindex
+\end{document}
